@@ -6,9 +6,12 @@
     <SharedGUID>2fb9ec73-8eeb-4be8-8c31-a3571a8bf9b5</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>AvaloniaToolboxShare</Import_RootNamespace>
+    <Import_RootNamespace>AvaloniaToolbox</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Behaviors\" />
+    <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Behaviors\ListBoxItemDoubleClickBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Usings.cs" />
+    <Compile Include="..\AvaloniaToolboxShare\Behaviors\ListBoxScrollIntoViewBehavior.cs" />
   </ItemGroup>
 </Project>
