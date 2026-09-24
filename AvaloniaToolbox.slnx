@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Src/AvaloniaToolbox100/AvaloniaToolbox100.csproj" />
+  <Project Path="Src/AvaloniaToolboxShare/AvaloniaToolboxShare.shproj" Id="2fb9ec73-8eeb-4be8-8c31-a3571a8bf9b5" />
+</Solution>
