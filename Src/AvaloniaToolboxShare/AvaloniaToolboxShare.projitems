@@ -11,7 +11,31 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\ListBoxItemDoubleClickBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enumerables\Enumerable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\ThemeMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Misc\Profiler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Misc\WaitCursor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ApplicationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AppSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AppSettingsJsonContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AppSettings_.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\DialogCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\DialogService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IApplicationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IDialogService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ISettingsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\SettingsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IDialogViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Usings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DialogViewModelBase.cs" />
     <Compile Include="..\AvaloniaToolboxShare\Behaviors\ListBoxScrollIntoViewBehavior.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Icons.axaml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
 </Project>
