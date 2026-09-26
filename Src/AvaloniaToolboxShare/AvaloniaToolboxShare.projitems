@@ -16,7 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Misc\Profiler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Misc\WaitCursor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ApplicationService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\AppSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AppSettingsBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\AppSettingsJsonContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\AppSettings_.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\DialogCollection.cs" />

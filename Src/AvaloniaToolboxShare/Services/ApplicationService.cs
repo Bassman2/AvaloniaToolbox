@@ -7,11 +7,12 @@ public class ApplicationService : IApplicationService
     private ISettingsService settingsService;
     private Application application = Application.Current ?? throw new InvalidOperationException("Application.Current is null.");
 
-    public ApplicationService(ISettingsService settingsService)
+    public ApplicationService()
     {
-        this.settingsService = settingsService;
+        settingsService = Ioc.Default.GetRequiredService<ISettingsService>();
+        
         actualThemeVariant = application.ActualThemeVariant ?? ThemeVariant.Light;
-        ThemeMode = settingsService.Current.ThemeMode;
+        ThemeMode = settingsService.CurrentBase.ThemeMode;
     }
 
    
@@ -32,14 +33,30 @@ public class ApplicationService : IApplicationService
                 _ => throw new ArgumentOutOfRangeException(nameof(currentThemeMode), $"Unknown theme mode: {currentThemeMode}")
             };
 
-            settingsService.Current.ThemeMode = value;
+            settingsService.CurrentBase.ThemeMode = value;
             settingsService.Save();
         }
     }
 
     public void SetThemeVariant(ThemeMode themeVariant)
     {
-        
+        if (Avalonia.Application.Current is { } app)
+        {
+            app.RequestedThemeVariant = themeVariant switch
+            {
+                ThemeMode.Light => ThemeVariant.Light,
+                ThemeMode.Dark => ThemeVariant.Dark,
+                _ => throw new InvalidOperationException()
+            };
+        }
+    }
+
+    public void SetThemeVariant(ThemeVariant themeVariant)
+    {
+        if (Avalonia.Application.Current is { } app)
+        {
+            app.RequestedThemeVariant = themeVariant;
+        }
     }
 
     public void ExitApplication()

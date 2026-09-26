@@ -1,37 +1,42 @@
-﻿namespace AvaloniaToolbox.Services;
+﻿using System.Text.Json.Serialization.Metadata;
 
-[JsonSerializable(typeof(AppSettings))]
-internal partial class AppSettingsJsonContext : JsonSerializerContext
-{
-}
+namespace AvaloniaToolbox.Services;
 
-public class SettingsService : ISettingsService
+
+public class SettingsService<T> : ISettingsService<T>
+    where T : AppSettingsBase, new()
 {
     private const string AppFolderName = "MasterGroupManager";
     private const string FileName = "settings.json";
 
     private readonly string filePath;
 
-   
-    public AppSettings Current { get; }
+    private readonly JsonSerializerContext context;
 
-    public SettingsService()
+
+    public T Current { get; }
+
+    public AppSettingsBase CurrentBase => (AppSettingsBase)Current;
+
+    public SettingsService(JsonSerializerContext context)
     {
+        this.context = context;
         string baseFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         filePath = Path.Combine(baseFolder, AppFolderName, FileName);
 
         Current = Load();
     }
 
-    private AppSettings Load()
+    private T Load()
     {
         try
         {
             if (File.Exists(filePath))
             {
                 string json = File.ReadAllText(filePath);
-   
-                var loadedSettings = JsonSerializer.Deserialize(json, AppSettingsJsonContext.Default.AppSettings);
+
+                JsonTypeInfo<T> jsonTypeInfo = (JsonTypeInfo<T>)context.GetTypeInfo(typeof(T))!;
+                var loadedSettings = JsonSerializer.Deserialize(json, jsonTypeInfo);
 
                 if (loadedSettings != null)
                 {
@@ -46,7 +51,7 @@ public class SettingsService : ISettingsService
         }
 
         // Fallback: Wenn keine Datei existiert oder ein Fehler auftrat, neue Instanz erzeugen
-        return new AppSettings();
+        return new();
     }
 
     /// <summary>
@@ -63,7 +68,8 @@ public class SettingsService : ISettingsService
                 Directory.CreateDirectory(directory);
             }
 
-            string json = JsonSerializer.Serialize(Current, AppSettingsJsonContext.Default.AppSettings);
+            JsonTypeInfo<T> jsonTypeInfo = (JsonTypeInfo<T>)context.GetTypeInfo(typeof(T))!;
+            string json = JsonSerializer.Serialize(Current, jsonTypeInfo);
 
             File.WriteAllText(filePath, json);
         }

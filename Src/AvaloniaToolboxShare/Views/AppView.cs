@@ -6,7 +6,7 @@ public partial class AppView : Window
 {
     private readonly ISettingsService settingsService;
 
-    private NativeMenu? docMenu;
+    //private NativeMenu? docMenu;
 
     public AppView()
     {
@@ -18,7 +18,7 @@ public partial class AppView : Window
         base.OnOpened(e);
 
         // Geometrie aus den Einstellungen laden
-        var settings = settingsService.Current;
+        var settings = settingsService.CurrentBase;
 
         Width = settings.WindowWidth;
         Height = settings.WindowHeight;
@@ -46,7 +46,7 @@ public partial class AppView : Window
 
     protected override void OnClosing(WindowClosingEventArgs e)
     {
-        var settings = settingsService.Current;
+        var settings = settingsService.CurrentBase;
 
         // Zustand und Größe sichern
         settings.LastWindowState = WindowState;

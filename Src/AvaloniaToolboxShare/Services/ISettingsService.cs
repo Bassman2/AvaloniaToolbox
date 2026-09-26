@@ -2,7 +2,12 @@
 
 public interface ISettingsService
 {
-    AppSettings Current { get; }
+    AppSettingsBase CurrentBase { get; }
 
     void Save();
+}
+
+public interface ISettingsService<T> : ISettingsService where T : AppSettingsBase
+{
+    T Current { get; }
 }
