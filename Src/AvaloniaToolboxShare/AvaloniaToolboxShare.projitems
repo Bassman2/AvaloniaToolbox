@@ -25,13 +25,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\IDialogService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ISettingsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\SettingsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AppViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IDialogViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Usings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DialogViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AppView.cs" />
     <Compile Include="..\AvaloniaToolboxShare\Behaviors\ListBoxScrollIntoViewBehavior.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Styles\Icons.axaml">
