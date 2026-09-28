@@ -29,6 +29,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IDialogViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Usings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DialogViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PageViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AppView.cs" />
     <Compile Include="..\AvaloniaToolboxShare\Behaviors\ListBoxScrollIntoViewBehavior.cs" />
   </ItemGroup>
