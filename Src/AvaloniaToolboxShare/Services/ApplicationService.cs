@@ -1,4 +1,5 @@
-﻿//using static System.Net.Mime.MediaTypeNames;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization.Metadata;
 
 namespace AvaloniaToolbox.Services;
 
@@ -86,5 +87,35 @@ public class ApplicationService : IApplicationService
         }
         catch
         { }
+    }
+
+    public async Task CopyToClipboardAsync(string textToCopy)
+    {
+        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            var clipboard = desktop.MainWindow?.Clipboard;
+
+            if (clipboard is not null)
+            {
+                await clipboard.SetTextAsync(textToCopy);
+            }
+        }
+    }
+}
+
+
+public static class ApplicationServiceExtensions
+{
+    
+    public static IServiceCollection AddSettings<
+        [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(this IServiceCollection services, JsonSerializerContext contect)
+        where T : AppSettingsBase, new()
+    {
+        services.AddSingleton<JsonSerializerContext>(sp => contect);
+        services.AddSingleton<SettingsService<T>>();
+        services.AddSingleton<ISettingsService>(sp => sp.GetRequiredService<SettingsService<T>>());
+        services.AddSingleton<ISettingsService<T>>(sp => sp.GetRequiredService<SettingsService<T>>());
+
+        return services;
     }
 }

@@ -9,4 +9,6 @@ public interface IApplicationService
     void ExitApplication();
     
     void OpenUrl(string url);
+
+    Task CopyToClipboardAsync(string textToCopy);
 }
