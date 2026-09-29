@@ -1,28 +1,26 @@
-﻿namespace AvaloniaToolbox.ViewModels;
+﻿using AvaloniaToolbox.Services;
+
+namespace AvaloniaToolbox.ViewModels;
 
 public partial class AppViewModel : ObservableObject
 {
+    protected readonly IApplicationService applicationService;
+    protected readonly IDialogService dialogService;
+
+    public AppViewModel()
+    {
+        applicationService = Ioc.Default.GetRequiredService<IApplicationService>();
+        dialogService = Ioc.Default.GetRequiredService<IDialogService>();
+    }
+
+    public static bool IsMacPlatform => OperatingSystem.IsMacOS();
+
     [ObservableProperty]
     public partial string StatusText { get; set; } = "Ready";
 
     [RelayCommand]
-    public void OnExit()
-    {
-        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-        {
-            desktop.Shutdown();
-        }
-    }
+    public void OnExit() => applicationService.ExitApplication();
 
-    //=> applicationService.ExitApplication();
-
-    //public ThemeMode CurrentTheme => applicationService.ThemeMode;
-
-
-    //[RelayCommand]
-    //public void OnSetMode(ThemeMode themeMode) => applicationService.ThemeMode = themeMode;
-
-
-    //[RelayCommand]
-    //public void OnHelp() => applicationService.OpenUrl(applicationHelpUrl);
+    [RelayCommand]
+    public void OnSetThemeVariant(string name) => applicationService.SetThemeVariant(new ThemeVariant(name, null));
 }

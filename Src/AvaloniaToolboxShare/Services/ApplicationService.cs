@@ -39,6 +39,14 @@ public class ApplicationService : IApplicationService
         }
     }
 
+    public void SetThemeVariant(ThemeVariant themeVariant)
+    {
+        if (Avalonia.Application.Current is { } app)
+        {
+            app.RequestedThemeVariant = themeVariant;
+        }
+    }
+
     public void SetThemeVariant(ThemeMode themeVariant)
     {
         if (Avalonia.Application.Current is { } app)
@@ -52,13 +60,13 @@ public class ApplicationService : IApplicationService
         }
     }
 
-    public void SetThemeVariant(ThemeVariant themeVariant)
-    {
-        if (Avalonia.Application.Current is { } app)
-        {
-            app.RequestedThemeVariant = themeVariant;
-        }
-    }
+    //public void SetThemeVariant(ThemeVariant themeVariant)
+    //{
+    //    if (Avalonia.Application.Current is { } app)
+    //    {
+    //        app.RequestedThemeVariant = themeVariant;
+    //    }
+    //}
 
     public void ExitApplication()
     {
