@@ -4,6 +4,12 @@ namespace AvaloniaToolbox.Misc;
 
 public static class CollectionSync
 {
+    public static ObservableCollection<TType> CreateAndSync<TType>(IList<TType> modelList)
+    {
+        return CreateAndSync(modelList, modelList, item => item);
+    }
+
+
     // Die Factory-Methode für den Primary Constructor
     public static ObservableCollection<TViewModel> CreateAndSync<TViewModel, TModel>(
         IEnumerable<TViewModel> initialItems,
