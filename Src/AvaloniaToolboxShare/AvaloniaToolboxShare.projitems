@@ -13,7 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\ListBoxItemDoubleClickBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enumerables\Enumerable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ThemeMode.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extentions\CollectionSyncExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Misc\CollectionSync.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Misc\Profiler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Misc\WaitCursor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ApplicationService.cs" />

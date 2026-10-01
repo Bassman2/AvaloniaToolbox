@@ -1,9 +1,8 @@
-﻿using System.Collections.ObjectModel;
-using System.Collections.Specialized;
+﻿
 
-namespace AvaloniaToolbox.Extentions;
+namespace AvaloniaToolbox.Misc;
 
-public static class CollectionSyncExtensions
+public static class CollectionSync
 {
     // Die Factory-Methode für den Primary Constructor
     public static ObservableCollection<TViewModel> CreateAndSync<TViewModel, TModel>(
